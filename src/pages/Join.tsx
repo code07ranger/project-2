@@ -52,17 +52,36 @@ const RECRUITMENT_STEPS = [
 ];
 
 export const Join: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('Navjot Singh');
+  const [email, setEmail] = useState('navjot@sggscc.ac.in');
+  const [phone, setPhone] = useState('+91 98XXX XXXXX');
   const [course, setCourse] = useState('B.Sc. (Hons) Computer Science');
   const [year, setYear] = useState('1st Year');
   const [domain, setDomain] = useState('AI & Emerging Tech');
-  const [statement, setStatement] = useState('');
-  const [portfolio, setPortfolio] = useState('');
+  const [statement, setStatement] = useState('Passionate about web development, AI, and building community-driven open source projects with Infinity SGGSCC.');
+  const [portfolio, setPortfolio] = useState('https://github.com/navjot-dev');
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const handleFillDummy = () => {
+    setName('Navjot Singh');
+    setEmail('navjot@sggscc.ac.in');
+    setPhone('+91 98XXX XXXXX');
+    setCourse('B.Sc. (Hons) Computer Science');
+    setYear('1st Year');
+    setDomain('AI & Emerging Tech');
+    setStatement('Passionate about web development, AI, and building community-driven open source projects with Infinity SGGSCC.');
+    setPortfolio('https://github.com/navjot-dev');
+  };
+
+  const handleClear = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setStatement('');
+    setPortfolio('');
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -202,13 +221,31 @@ export const Join: React.FC = () => {
           <div className="p-8 sm:p-10 bg-white dark:bg-neo-dark-card rounded-neo-lg border-[3px] border-neo-border dark:border-neo-dark-border shadow-neo-lg dark:shadow-neo-dark-lg relative overflow-hidden">
             <BorderBeam size={280} duration={14} colorFrom="#FFE600" colorTo="#7DD3FC" />
 
-            <div className="mb-8 relative z-10">
-              <h2 className="font-heading font-black text-2xl text-neo-text dark:text-neo-dark-text">
-                Candidate Application Form
-              </h2>
-              <p className="text-xs text-neo-text/70 dark:text-neo-dark-text/70 mt-1 font-body">
-                Tell us about your passions, skills, and which Infinity track excites you.
-              </p>
+            <div className="mb-8 relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <h2 className="font-heading font-black text-2xl text-neo-text dark:text-neo-dark-text">
+                  Candidate Application Form
+                </h2>
+                <p className="text-xs text-neo-text/70 dark:text-neo-dark-text/70 mt-1 font-body">
+                  Tell us about your passions, skills, and which Infinity track excites you.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleFillDummy}
+                  className="px-2.5 py-1 text-[11px] font-mono font-bold rounded-neo-sm bg-neo-yellow border-2 border-neo-border text-neo-border shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                >
+                  ⚡ Fill Dummy
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="px-2.5 py-1 text-[11px] font-mono font-bold rounded-neo-sm bg-neo-bg dark:bg-neo-dark-bg border-2 border-neo-border text-neo-text dark:text-neo-dark-text shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+                >
+                  Clear
+                </button>
+              </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
@@ -231,7 +268,7 @@ export const Join: React.FC = () => {
                 />
                 <Input
                   label="Phone / WhatsApp"
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 98XXX XXXXX"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
