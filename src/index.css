@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Neo-Brutalist Light Theme ── */
+    --background: #FBF9F4;
+    --foreground: #19191C;
+
+    --primary: #FFE600;
+    --primary-hover: #FFD000;
+    --secondary: #7DD3FC;
+    --secondary-hover: #60C5F7;
+    --accent: #F472B6;
+    --accent-hover: #EC4899;
+
+    --card: #FFFFFF;
+    --card-hover: #FFFEF5;
+    --border: #19191C;
+    --border-light: rgba(25, 25, 28, 0.15);
+
+    --muted: #6B7280;
+    --muted-foreground: #9CA3AF;
+
+    --success: #10B981;
+    --danger: #EF4444;
+
+    --shadow: 5px 5px 0px #19191C;
+    --shadow-sm: 2px 2px 0px #19191C;
+    --shadow-lg: 6px 6px 0px #19191C;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+
+    /* Light mode surface tints for visual richness */
+    --surface-warm: #FFF8E1;    /* warm yellow tinted surface */
+    --surface-cool: #EFF9FF;    /* cool blue tinted surface */
+    --surface-blush: #FFF0F6;   /* soft pink tinted surface */
+    --surface-mint: #ECFDF5;    /* fresh green tinted surface */
+  }
+
+  .dark {
+    /* ── Neo-Brutalist Dark Theme ── */
+    --background: #131316;
+    --foreground: #FBF9F4;
+
+    --primary: #FFE600;
+    --primary-hover: #FFD000;
+    --secondary: #7DD3FC;
+    --secondary-hover: #60C5F7;
+    --accent: #F472B6;
+    --accent-hover: #EC4899;
+
+    --card: #1E1E24;
+    --card-hover: #25252D;
+    --border: #3A3A44;
+    --border-light: rgba(251, 249, 244, 0.12);
+
+    --muted: #9CA3AF;
+    --muted-foreground: #6B7280;
+
+    --success: #34D399;
+    --danger: #F87171;
+
+    --shadow: 4px 4px 0px #FFE600;
+    --shadow-sm: 2px 2px 0px #FFE600;
+    --shadow-lg: 6px 6px 0px #FFE600;
+
+    --surface-warm: #1E1C14;
+    --surface-cool: #141A1E;
+    --surface-blush: #1E141A;
+    --surface-mint: #141E1A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+  }
+
+  ::selection {
+    background-color: #FFE600;
+    color: #19191C;
+  }
+
+  /* Neo-brutalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+    border-left: 2px solid var(--border);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+  }
+}
+
+@layer components {
+  /* ── Neo-brutalist Card ── */
+  .neo-box {
+    background-color: var(--card);
+    border: 2.5px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateZ(0);
+  }
+
+  .neo-box-interactive {
+    background-color: var(--card);
+    border: 2.5px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateZ(0);
+  }
+
+  .neo-box-interactive:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .neo-box-interactive:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Neo-brutalist Highlight Badge ── */
+  .neo-highlight {
+    background-color: var(--primary);
+    color: #19191C;
+    border: 2px solid var(--border);
+    padding: 0 8px;
+    border-radius: 6px;
+    display: inline-block;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── Handwritten Note ── */
+  .handwriting-note {
+    font-family: 'Caveat', cursive;
+    color: var(--foreground);
+  }
+
+  .dark .handwriting-note {
+    color: var(--primary);
+  }
+
+  /* ── Grid Paper Pattern ── */
+  .neo-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(25, 25, 28, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(25, 25, 28, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .dark .neo-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(251, 249, 244, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(251, 249, 244, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* ── Dot Paper Pattern ── */
+  .neo-dot-pattern {
+    background-image: radial-gradient(rgba(25, 25, 28, 0.10) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  .dark .neo-dot-pattern {
+    background-image: radial-gradient(rgba(251, 249, 244, 0.10) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  /* ── Glass Card (legacy compat, now uses CSS vars) ── */
+  .glass-card {
+    background-color: var(--card);
+    border: 2.5px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius-md);
+  }
+
+  /* ── Surface Tint Cards (enhanced light palette) ── */
+  .surface-warm {
+    background-color: var(--surface-warm);
+  }
+  .surface-cool {
+    background-color: var(--surface-cool);
+  }
+  .surface-blush {
+    background-color: var(--surface-blush);
+  }
+  .surface-mint {
+    background-color: var(--surface-mint);
+  }
+
+  /* ── Tech grid (legacy dark compat) ── */
+  .tech-grid {
+    /* Now handled by neo-grid-pattern */
+  }
+}
