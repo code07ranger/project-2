@@ -216,26 +216,7 @@ All backend API routes are served under `/api` and enforce role authorization:
 | `POST` | `/api/admin/announcements` | **Admin Only** | Broadcast announcement to student stream |
 | `DELETE` | `/api/admin/announcements/:id` | **Admin Only** | Delete announcement |
 
----
 
-## 🎬 2-Minute Hackathon Walkthrough Script
-
-1. **Homepage:** Show the responsive navigation, live SGGSCC beacon, hero tagline (*“Beyond Limits. Beyond Technology.”*), and interact with the **Quantum Telemetry Console** switching between Telemetry, Stack, and Verified tabs.
-2. **5-Pillar Bento Grid:** Scroll down to view the asymmetric bento layout highlighting AI & Emerging Tech with tool tags, Cybersecurity, Design, Gaming, and Web3.
-3. **Verified Impact:** Point out the documented milestones citing the *SGGSCC 2023–24 Annual Report* (Graphista 400+ registrations, 50+ colleges, WAGMI partnership).
-4. **Events Discovery:** Navigate to **Events** (`/events`), type `neural` or filter by `Cybersecurity` to show real-time search and filter responsiveness.
-5. **Event Pass Booking:** Click on an upcoming workshop (e.g. *Neural Frontiers*), complete the registration form, and show the confirmed digital pass. Demonstrate that re-registering is blocked by duplicate-prevention logic.
-6. **Student Dashboard:** Navigate to `/student` to review registered passes, view society announcements, and preview digitally verified certificates for sessions marked Present.
-7. **Admin Control:** Log in as **Demo Admin** on `/login`, navigate to `/admin`, create a new event, toggle a student's attendance to `Present`, and publish a live announcement.
-8. **Verified Sync:** Return to the public event listing to see the new event live, and check the student dashboard to verify the updated attendance certificate.
-
----
-
-## 📜 Compliance & Disclaimer
-
-This software is an independent student hackathon prototype developed to showcase a digital platform concept for **Infinity – The Tech Society of Sri Guru Gobind Singh College of Commerce**. All official college trademarks, logos, and verified annual report citations remain the property of **SGGSCC, University of Delhi**. Official recruitment and event registrations are announced via the society's verified Instagram ([@infinity.sggscc](https://www.instagram.com/infinity.sggscc/)) and college notice boards.
-
----
 
 *Crafted for INFINITY — The Tech Society | SGGSCC, Delhi University.*
 
