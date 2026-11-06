@@ -66,7 +66,7 @@ export const InfinitySymbol: React.FC<InfinitySymbolProps> = ({
   return (
     <motion.div
       className={`inline-flex items-center justify-center select-none ${className}`}
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={false}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       aria-hidden="true"

@@ -301,9 +301,9 @@ export const Home: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
           {/* LEFT SIDE per Prompt Section 5 */}
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
             className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 text-left"
           >
             {/* Small handwritten label: HELLO, INNOVATORS! */}
@@ -378,9 +378,9 @@ export const Home: React.FC = () => {
 
           {/* RIGHT SIDE per Prompt Section 5: Large framed technology-themed visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className="lg:col-span-5 flex flex-col items-center"
           >
             {/* Framed composition: 3px black border, hard offset shadow, corner brackets */}

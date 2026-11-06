@@ -22,11 +22,11 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com"],
         styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
         fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
         imgSrc: ["'self'", "data:", "https:", "blob:"],
-        connectSrc: ["'self'", "https://infinity-sggscc.antideploy.app", "http://localhost:*"],
+        connectSrc: ["'self'", "https://infinity-sggscc.antideploy.app", "https://cloudflareinsights.com", "http://localhost:*"],
       },
     },
     crossOriginEmbedderPolicy: false,
@@ -88,9 +88,31 @@ app.use('/api/*', (_req: Request, res: Response) => {
   res.status(404).json({ success: false, error: 'API endpoint not found.' });
 });
 
-// Serve frontend build in production
-app.use(express.static(distPath));
+// Serve frontend build in production with cache control
+app.use(
+  express.static(distPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      }
+    },
+  })
+);
+
+// Explicit 404 for missing static assets — MUST NEVER return index.html for assets/files
+app.get(['/assets/*', '*.*'], (req: Request, res: Response) => {
+  res.status(404).type('text/plain').send(`Asset not found: ${req.path}`);
+});
+
+// Serve fresh index.html for all SPA routes
 app.get('*', (_req: Request, res: Response) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
